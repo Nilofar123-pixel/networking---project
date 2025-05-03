@@ -145,16 +145,19 @@ no shutdown
 
 interface g0/0.10
 encapsulation dot1Q 10
+
 ip address 192.168.1.1 255.255.255.224
 exit
 
 interface g0/0.20
 encapsulation dot1Q 20
+
 ip address 192.168.1.33 255.255.255.224
 exit
 
 interface g0/0.30
 encapsulation dot1Q 30
+
 ip address 192.168.1.65 255.255.255.224
 exit
 
@@ -163,6 +166,7 @@ exit
 Use each PC's Command Prompt to ping the others:
 
 ping 192.168.1.40  # from HR to IT
+
 ping 192.168.1.70  # from HR to Finance
 
 ## Expected Output
