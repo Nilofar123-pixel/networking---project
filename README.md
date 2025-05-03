@@ -76,6 +76,8 @@ The network is up and working — ping is successful between the PCs.
 
 
 
+
+
 ## Subnetting Lab – IP Design & Routing
 
 ## Overview
