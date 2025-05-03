@@ -30,7 +30,7 @@ This project demonstrates a basic network setup using Cisco Packet Tracer. It in
 
 - PCO: 192.168.1.1
 - PC1: 192.168.2.1
-- 
+
 ## topology
 ![Screenshot 2025-05-02 180202](https://github.com/user-attachments/assets/5b12fb8c-90ae-4e93-a068-66bed2f25069)
 
@@ -76,7 +76,7 @@ The network is up and working — ping is successful between the PCs.
 
 
 
-# Subnetting Lab – IP Design & Routing
+## Subnetting Lab – IP Design & Routing
 
 ## Overview
 
