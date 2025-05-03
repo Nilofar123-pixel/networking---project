@@ -1,23 +1,65 @@
 # networking---project
-my personal project related to networking 
+my personal project related to networking
 # Basic Cisco Packet Tracer Network Setup
-
-This is a simple networking project created using Cisco Packet Tracer. It demonstrates a basic LAN setup with:
-
-- 1 Router (2911)
-- 2 Switches (2960)
-- 2 PCs
-
-The network is configured with static IP addresses, and connectivity is tested using ping.
+## overview
+This project demonstrates a basic network setup using Cisco Packet Tracer. It includes a router, two switches, and two PCs configured with IP addressing and connectivity tested using ping.
 
 ## Objectives
 
 - Understand basic router and switch configuration
 - Learn IP address assignment
 - Test end-to-end connectivity
+  
+----  
+## deivice used
+- 1 Router - Cisco 2911
+- 2 Switches Cisco 2960
+- 2 PCs Generic PCs
+- Copper Straight-through Cables - For connecting router to switches and PCs to switches
+
+## IP Address Scheme
+
+| Device  | Interface          | IP Address     | Subnet Mask    |
+|---------|--------------------|----------------|----------------|
+| PC0     | FastEthernet0      | 192.168.1.10   | 255.255.255.0  |
+| Router  | GigabitEthernet0/0 | 192.168.1.1    | 255.255.255.0  |
+| Router  | GigabitEthernet0/1 | 192.168.2.1    | 255.255.255.0  |
+| PC1     | FastEthernet0      | 192.168.2.10   | 255.255.255.0  |
+
+## Default Gateways
+
+- PCO: 192.168.1.1
+- PC1: 192.168.2.1
+- 
+## topology
+![Screenshot 2025-05-02 180202](https://github.com/user-attachments/assets/5b12fb8c-90ae-4e93-a068-66bed2f25069)
+
+
+## configuration steps
+### 1. Set Up Devices
+Place 1 Router, 2 Switch, and 2 PCs in Packet Tracer.
+
+## configure router
+bash
+enable
+configure terminal
+hostname Router
+interface g0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+
+interface g0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+
+## Test connectivity
+ping 192.168.0.2   # from PC0 to PC1  
+ping 192.168.0.1   # from PC1 to PC0
+
 
 ## Tools Used
-
 - Cisco Packet Tracer
 
 ## How to Run
@@ -27,10 +69,9 @@ The network is configured with static IP addresses, and connectivity is tested u
 3. Use the *Command Prompt* on each PC to test connectivity using the ping command.
 
 ## Status
-
 The network is up and working — ping is successful between the PCs.
-![Screenshot 2025-05-02 180151](https://github.com/user-attachments/assets/a68630b5-6c35-4155-b7ec-dbc9eb0b82b8)
-![Screenshot 2025-05-02 180202](https://github.com/user-attachments/assets/632a12de-c48e-436b-bdde-d4fd85995378)
+![Screenshot 2025-05-02 180151](https://github.com/user-attachments/assets/67b340f3-fb6d-4dde-90c4-e5e29e1ff901)
+
 
 
 
@@ -79,8 +120,6 @@ Subnetting into /27 (each with 30 usable IPs):
 ![Screenshot 2025-05-03 042919](https://github.com/user-attachments/assets/53b8f460-e3ed-47e8-8291-a5f20d728c41)
 
 
-[HR PC]     [IT PC]     [Finance PC] |           |             | +-----------+-------------+ | Switch | Router
-
 ---
 
 ## Configuration Steps
@@ -94,15 +133,10 @@ Place 1 Router, 1 Switch, and 3 PCs in Packet Tracer.
 - Connect all PCs to the switch using straight-through cables.
 - Connect the switch to the router via G0/0 or F0/0.
 
-### 3. Assign IPs to PCs
-
-*HR PC:* 192.168.1.10 /27, Gateway 192.168.1.1  
-*IT PC:* 192.168.1.40 /27, Gateway 192.168.1.33  
-*Finance PC:* 192.168.1.70 /27, Gateway 192.168.1.65
 
 ### 4. Configure Router (Router-on-a-Stick or Sub-Interfaces)
 
-```bash
+bash
 enable
 configure terminal
 
@@ -124,39 +158,23 @@ encapsulation dot1Q 30
 ip address 192.168.1.65 255.255.255.224
 exit
 
-Testing Connectivity
+## Testing Connectivity
 
 Use each PC's Command Prompt to ping the others:
 
 ping 192.168.1.40  # from HR to IT
 ping 192.168.1.70  # from HR to Finance
 
-Expected Output
+## Expected Output
 
 Successful ping replies indicate that subnetting and routing are correctly configured.
 
 
----
+## Status
 
-Files in this Repository
+-The subnetted network is successfully configured.
+-All departments (HR, IT, Finance) are assigned to different subnets.
+-Router-on-a-stick configuration enables inter-VLAN routing.
+-All PCs can successfully ping each other across subnets, proving full connectivity.
 
-subnetting-lab/
-├── subnetting-lab.pkt      # Cisco Packet Tracer file
-├── topology.png            # Network topology screenshot
-├── README.md               # This documentation
-
-
----
-
-Conclusion
-
-This lab demonstrates practical skills in:
-
-Subnetting
-
-VLAN tagging
-
-Router configuration
-
-Inter-network communication
-
+![Screenshot 2025-05-03 041802](https://github.com/user-attachments/assets/819bcdfe-0c4a-4f9a-b196-c40961a1790b)
